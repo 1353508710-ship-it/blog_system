@@ -1,0 +1,26 @@
+server:
+  port: 80  #http默认端口，无需输入80即可访问localhost：8080、xx
+
+spring:
+  profiles:
+    active: jdbc,mail,redis  #引入application-JDBC，mail，Redis配置文件
+  thymeleaf:
+    cache: false  #false可实时刷新页面(修改html页面时无需重新启动服务器)
+
+#关于mybatis的配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名法的匹配规则
+  mapper-locations: classpath:mapper/*.xml  #配置mybatis的xml映射文件的路径
+  type-aliases-package: com.hzxy.model.domain #配置xml映射文件中实体类所在的包名
+
+#pageHelper分页设置
+pagehelper:
+  helper-dialect: mysql  #指定数据库的方言
+  reasonable: true  #启用分页合理性校验
+  support-methods-arguments: true  #启用方法参数自动分页
+  params: count=countSql  #定义分页参数映射规则，用countSQL作为统计总数的sql标识
+
+#浏览器cookie相关配置
+COOKIE:
+  VALIDITY: 1800  #设置cookie有效期  30分钟=1800秒

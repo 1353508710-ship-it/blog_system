@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzxy.dao.ArticleMapper">
+<!--    配置ArticleMapper接口中的updateArticleWithId-->
+    <update id="updateArticleWithId" parameterType="Article">
+        update t_article
+        <set>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+
+            <if test="content!=null">
+                content=#{content},
+            </if>
+
+            <if test="created!=null">
+                created=#{created},
+            </if>
+
+            <if test="modified!=null">
+                modified=#{modified},
+            </if>
+
+            <if test="categories!=null">
+                categories=#{categories},
+            </if>
+
+            <if test="tags">
+                tags=#{tags},
+            </if>
+
+            <if test="allowComment!=null">
+                allow_comment=#{allowComment},
+            </if>
+
+            <if test="thumbnail">
+                thumbnail=#{thumbnail},
+            </if>
+
+            <if test="his!=null">
+                his=#{his},
+            </if>
+
+            <if test="commentsNum">
+                comments_num=#{commentsNum}
+            </if>
+
+        </set>
+        where id=#{id}
+    </update>
+</mapper>
